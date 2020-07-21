@@ -1,0 +1,24 @@
+//DEFSMF1 JOB CLASS=A,MSGCLASS=H,MSGLEVEL=(1,1),NOTIFY=&SYSUID,
+//       REGION=0M
+//DEFSMF EXEC PGM=IDCAMS
+//VOLUME1  DD UNIT=SYSALLDA,VOL=SER={{ volume }},DISP=SHR
+//SYSPRINT DD  SYSOUT=*
+//SYSIN    DD  *
+{% for num in [1, 2, 3] %}
+    DEFINE CLUSTER -                     
+     (CONTROLINTERVALSIZE(4096) -        
+      CYLINDERS(200) -                   
+      NAME({{ ssa }}.{{ hlq }}.MAN{{ num }}) - 
+      NONINDEXED -                       
+      RECORDSIZE(4086,32767) -           
+      REUSE -                            
+      SHAREOPTIONS(2) -                  
+      SPANNED -                          
+      SPEED -                       
+      VOLUME({{ volume }}) ) - 
+      DATA( -                       
+      NAME({{ ssa }}.{{ hlq }}.MAN{{ num }}.DATA))
+
+{% endfor %}
+/*                                  
+//             

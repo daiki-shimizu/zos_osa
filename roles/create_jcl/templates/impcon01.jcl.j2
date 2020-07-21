@@ -1,0 +1,12 @@
+//CLN1F JOB CLASS=A,MSGCLASS=H,MSGLEVEL=(1,1),NOTIFY=&SYSUID
+//STEP1 EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+//SYSIN    DD *
+   IMPORT CONNECT           -
+      OBJECTS(              -
+      ({{ master.mcat.name }}             -
+       DEVICETYPE(3390)     -
+       VOLUMES({{ master.mcat.volume }}))     -
+      )                     -
+    CATALOG({{ driver.mcat.name }})
+/*

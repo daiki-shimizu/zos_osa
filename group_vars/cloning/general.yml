@@ -1,0 +1,11 @@
+JCLLIB: IBMUSER.ANSIBLE.JCLLIB
+driver:
+  mcat:
+    name: MCAT.F21D
+    volume: F21DC1
+master:
+  mcat:
+    name: MCAT.MN1D
+    volume: MN1DT1
+hlq: SHR1D
+ssa: CLONE

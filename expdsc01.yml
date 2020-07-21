@@ -1,0 +1,13 @@
+- hosts: cloning
+  collections:
+    - smart.jcllib
+  gather_facts: no
+  environment: "{{ environment_vars }}"
+
+  tasks:
+    - include_role:
+        name: create_jcl
+      vars:
+        jcllib: "{{ JCLLIB }}"
+        jcl_name: expdsc01.jcl
+        member: EXPDSC01

@@ -1,0 +1,18 @@
+- hosts: cloning
+  collections:
+    - smart.jcllib
+  gather_facts: no
+  environment: "{{ environment_vars }}"
+
+  tasks:
+    - include_role:
+        name: create_jcl
+      vars:
+        jcllib: "{{ JCLLIB }}"
+        jcl_name: iodfcp1.jcl
+        member: IODFCP1
+        master_mcat_name: "{{ master.mcat.name }}"
+        master_mcat_volume: "{{ master.mcat.volume }}"
+        iodf:
+          source: SYS1.IODF00
+          target: "{{ hlq }}.IODF00"

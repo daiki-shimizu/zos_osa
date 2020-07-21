@@ -1,0 +1,34 @@
+PYZ: "/usr/lpp/IBM/cyp/v3r8/pyz"
+ZOAU: "/usr/lpp/IBM/zoautil"
+
+environment_vars:
+  _BPXK_AUTOCVT: "ON"
+  ZOAU_HOME: "{{ ZOAU }}"
+  PYTHONPATH: "{{ ZOAU }}/lib"
+  LIBPATH: "{{ ZOAU }}/lib:{{ PYZ }}/lib:/lib:/usr/lib:."
+  PATH: "{{ ZOAU }}/bin:{{ PYZ }}/bin:/bin:/var/bin:/usr/lpp/java/J8.0/bin"
+  _CEE_RUNOPTS: "FILETAG(AUTOCVT,AUTOTAG) POSIX(ON)"
+  _TAG_REDIR_ERR: "txt"
+  _TAG_REDIR_IN: "txt"
+  _TAG_REDIR_OUT: "txt"
+  LANG: "C"
+
+JCLLIB: IBMUSER.ANSIBLE.JCLLIB
+
+init00:
+  jcllib: "{{ JBLLIB }}"
+  member: INIT00
+  dev_vols:
+    - device: E9A7
+      volume: 0XE9A7
+    - device: E9A8
+      volume: 0XE9A8
+    - device: E9A9
+      volume: 0XE9A9
+
+defmcat1:
+  jcllib: "{{ JCLLIB }}"
+  member: DEFMCAT1
+  name: MCAT.F21D
+  volume: F21DC1
+

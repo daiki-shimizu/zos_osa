@@ -1,0 +1,15 @@
+- hosts: cloning
+  collections:
+    - smart.jcllib
+  gather_facts: no
+  environment: "{{ environment_vars }}"
+
+  tasks:
+    - include_role:
+        name: create_jcl
+      vars:
+        jcllib: "{{ JCLLIB }}"
+        jcl_name: expdct02.jcl
+        member: EXPDCT02
+        name: "{{ driver.mcat.name }}"
+        volume: "{{ driver.mcat.name }}"
