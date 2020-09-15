@@ -1,0 +1,22 @@
+///DEFMCAT1 JOB CLASS=A,MSGCLASS=H,MSGLEVEL=(1,1),NOTIFY=&SYSUID
+//STEP1 EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+//SYSIN DD *
+   DEFINE UCAT          -
+   (                    -
+    ICFCATALOG          -
+    NAME({{ name }})    -
+    VOLUME({{ volume }})      -
+    CYL(12 5)           -
+    FREESPACE(10 10)    -
+    SHR(3 4)            -
+    STRNO(3)            -
+    )                   -
+ DATA (                 -
+      CISZ(4096)        -
+      BUFND(4)          -
+      )                 -
+ INDEX (                -
+      BUFNI(4)          -
+        )
+/*

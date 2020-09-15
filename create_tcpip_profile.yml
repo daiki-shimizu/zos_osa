@@ -1,0 +1,12 @@
+- hosts: cloning
+  gather_facts: no
+  environment: "{{ environment_vars }}"
+
+  tasks:
+    - name: create TCPIP profile
+      include_role:
+        name: zos_template
+      vars:
+        src: tcpip_profile
+        dest: "{{ tcpip_profile.dataset }}"
+        member: "{{ tcpip_profile.member }}"

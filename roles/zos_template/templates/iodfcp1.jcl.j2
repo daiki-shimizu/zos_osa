@@ -1,0 +1,15 @@
+//IODFCOP JOB CLASS=A,MSGCLASS=H,MSGLEVEL=(1,1),NOTIFY=&SYSUID,
+// REGION=0M
+//COPY1 EXEC PGM=ADRDSSU ,PARM='TYPRUN=NORUN'
+//SYSPRINT DD SYSOUT=*
+//SYSIN DD *
+   COPY DATASET(INCLUDE(                          -
+      {{ source.iodf.name }}                         -
+   ))                                             -
+   LOGINDYNAM({{ source.iodf.volume }})                             -
+   OUTDYNAM({{ target.iodf.volume }})                               -
+   SHR TOL(ENQF) ALLDATA(*) ALLEXCP               -
+   RECATALOG({{ driver.mcat.name }})                           -
+   INCAT({{ source.mcat.name }}) ONLYINCAT                    -
+   RENAMEU(({{ source.iodf.name }},{{ target.iodf.name }}))
+/*

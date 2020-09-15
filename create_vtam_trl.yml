@@ -1,0 +1,12 @@
+- hosts: cloning
+  gather_facts: no
+  environment: "{{ environment_vars }}"
+
+  tasks:
+    - name: create VTAM TRL node
+      include_role:
+        name: zos_template
+      vars:
+        src: vtam_trl
+        dest: "{{ vtam_trl.dataset }}"
+        member: "{{ vtam_trl.member }}"
