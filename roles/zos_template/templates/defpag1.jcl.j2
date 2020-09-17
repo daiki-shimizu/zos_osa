@@ -1,0 +1,22 @@
+//DEFPAG1 JOB CLASS=A,MSGCLASS=H,MSGLEVEL=(1,1),NOTIFY=&SYSUID
+//DEFPAGE EXEC PGM=IDCAMS
+//VOLUME1  DD UNIT=SYSALLDA,VOL=SER={{ target.page.volume }},DISP=SHR
+//SYSPRINT DD  SYSOUT=*
+//SYSIN    DD  *
+    DEFINE PAGESPACE ( -
+           NAME ({{ ssa }}.{{ hlq }}.PAGE.COMMON) -
+           CYLINDERS (54)            -
+           FILE (VOLUME1)              -
+           VOLUMES ({{ volume }}))
+    DEFINE PAGESPACE ( -
+           NAME ({{ ssa }}.{{ hlq }}.PAGE.PLPA) -
+           CYLINDERS (216)           -
+           FILE (VOLUME1)              -
+           VOLUMES ({{ volume }}))
+    DEFINE PAGESPACE ( -
+           NAME ({{ ssa }}.{{ hlq }}.PAGE.LOCAL1) -
+           CYLINDERS (821)           -
+           FILE (VOLUME1)              -
+           VOLUMES ({{ volume }}))
+/*
+//

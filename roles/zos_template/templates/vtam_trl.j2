@@ -1,0 +1,8 @@
+TRL{{ vtam_trl.read }}  VBUILD TYPE=TRL                                                
+MPC{{ vtam_trl.read }}  TRLE  LNCTL=MPC,                                              X
+               MPCLEVEL=QDIO,                                          X
+               READ={{ vtam_trl.read }},                                              X
+               WRITE={{ vtam_trl.write }},                                             X
+               DATAPATH=({{ vtam_trl.datapath }}),                                        X
+               PORTNUM={{ vtam_trl.portnum }},                                              X
+               PORTNAME={{ vtam_trl.portname }}

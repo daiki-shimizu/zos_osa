@@ -1,0 +1,17 @@
+HOME
+  {{ tcpip_profile.ipaddress }} {{ tcpip_profile.link_name }}
+
+BEGINRoutes
+  ROUTE {{ tcpip_profile.ipaddress | ipsubnet(tcpip_profile.prefixlen) }} = {{ tcpip_profile.link_name }} MTU DEFAULTSIZE
+  ROUTE DEFAULT  {{ tcpip_profile.gateway }} {{ tcpip_profile.link_name }} MTU DEFAULTSIZE
+ENDRoutes
+
+PORT
+    21 TCP FTPD1 
+    22 TCP SSHD* 
+    23 TCP TN3270
+
+DEVICE {{ tcpip_profile.device_name }} MPCIPA NONROUTER AUTORESTART
+LINK   {{ tcpip_profile.link_name }} IPAQENET {{ tcpip_profile.device_name }}
+
+START {{ tcpip_profile.device_name }}

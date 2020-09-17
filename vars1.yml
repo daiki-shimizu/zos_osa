@@ -1,0 +1,20 @@
+vtam_trl:
+  read: "03F0"
+  write: "03F1"
+  datapath: "03F2"
+  portnum: 1
+  portname: OSA03F0
+  dataset: IBMUSER.ANSIBLE.JCLLIB
+  member: TRL03F0
+tcpip_profile:
+  ipaddress: 172.16.5.111
+  prefixlen: 24
+  gateway: 172.16.5.250
+  device_name: OSA03F0
+  link_name: ETH1
+  dataset: IBMUSER.ANSIBLE.JCLLIB
+  member: PROFILE1
+tcpip_data:
+  tcpipjobname: TCPIPZ
+  dataset: IBMUSER.ANSIBLE.JCLLIB
+  member: TCPDATA1

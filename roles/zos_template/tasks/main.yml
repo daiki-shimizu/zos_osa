@@ -1,0 +1,23 @@
+- name: create a template file
+  template:
+    src: "{{ src }}.j2"
+    dest: "/tmp/{{ dest }}_{{ member }}"
+
+- name: copy the file to MVS Dataset
+  zos_copy:
+    src: "/tmp/{{ dest }}_{{ member }}"
+    dest: "{{ dest }}({{ member }})"
+    remote_src: true
+    force: true
+    encoding:
+      from: ISO8859-1
+      to: IBM-1047
+
+- name: retrieve the content of the file
+  shell: dtail -n +1 "{{ dest }}({{ member }})"
+  register: content
+
+- name: show the content
+  debug:
+    msg: "{{ content.stdout_lines }}"
+
