@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 - name: create a template file
   template:
     src: "{{ src }}.j2"
@@ -15,9 +16,39 @@
 
 - name: retrieve the content of the file
   shell: dtail -n +1 "{{ dest }}({{ member }})"
+=======
+- name: set fact template_path for use
+  set_fact:
+    template_path: "/tmp/{{ src }}_{{ member }}"
+
+- name: delete an old template file 
+  file:
+    path: "{{ template_path }}"
+    state: absent
+
+- name: create a template file
+  template:
+    src: "{{ src }}.j2"
+    dest: "{{ template_path }}"
+
+- name: Convert the file from ISO8859-1 to IBM-1047
+  zos_encode:
+    src: "{{ template_path }}"
+    from_encoding: ISO8859-1
+    to_encoding: IBM-1047
+
+- name: retrieve the content of the file
+  shell: cat "{{ template_path }}"
+>>>>>>> 5f41b6fd7dbe44c15f0ea5ea3fb9eba952ce9447
   register: content
 
 - name: show the content
   debug:
     msg: "{{ content.stdout_lines }}"
 
+<<<<<<< HEAD
+=======
+- name: Copy the file to MVS Dataset
+  shell: cp "{{ template_path }}" "//'{{ dest|upper }}({{ member|upper }})'"
+
+>>>>>>> 5f41b6fd7dbe44c15f0ea5ea3fb9eba952ce9447

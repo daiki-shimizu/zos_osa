@@ -1,9 +1,0 @@
-//EXPDSC01 JOB CLASS=A,MSGCLASS=H,MSGLEVEL=(1,1),NOTIFY=&SYSUID 
-//STEP1 EXEC PGM=IDCAMS
-//SYSPRINT DD SYSOUT=*
-//SYSIN    DD *
-   EXPORT                   -
-       {{ master.mcat.name }}         -
-       DISCONNECT           -
-    CATALOG({{ driver.mcat.name }})     
-/*
