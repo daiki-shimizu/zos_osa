@@ -12,7 +12,6 @@
     encoding:
       from: ISO8859-1
       to: IBM-1047
-    register: result
     temp_path: "/tmp/{{ dest }}_{{ member }}"
 
 - name: retrieve the content of the file
