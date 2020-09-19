@@ -14,9 +14,6 @@
       to: IBM-1047
   register: result
   ignore_errors: yes
-  until: result.msg.find('EDC5129I') == -1
-  retries: 5
-  delay: 1
 
 - name: show the result
   debug:
