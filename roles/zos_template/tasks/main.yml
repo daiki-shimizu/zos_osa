@@ -17,7 +17,7 @@
 
 - name: show the result
   debug:
-    msg: "{{ result.stdout_lines }}"
+    msg: "{{ result }}"
 
 - name: retrieve the content of the file
   shell: dtail -n +1 "{{ dest }}({{ member }})"
