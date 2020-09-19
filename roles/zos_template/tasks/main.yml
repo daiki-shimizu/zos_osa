@@ -12,6 +12,10 @@
     encoding:
       from: ISO8859-1
       to: IBM-1047
+    register: result
+    until: result.msg.find('EDC5129I') == -1
+    retries: 5
+    delay: 1
 
 - name: retrieve the content of the file
   shell: dtail -n +1 "{{ dest }}({{ member }})"
